@@ -1,0 +1,83 @@
+App\Entity\Forecast:
+    properties:
+        location:
+            - NotNull:
+                  groups: [create, edit]
+
+        date:
+            - NotNull:
+                  groups: [create, edit]
+
+        temperature:
+            - NotNull:
+                  groups: [create, edit]
+            - Range:
+                  min: -80
+                  max: 60
+                  groups: [create, edit]
+
+        precipitation:
+            - NotNull:
+                  groups: [create, edit]
+            - Range:
+                  min: 0
+                  max: 1000
+                  groups: [create, edit]
+
+        pressure:
+            - NotNull:
+                  groups: [create, edit]
+            - Range:
+                  min: 800
+                  max: 1200
+                  groups: [create, edit]
+
+        condition:
+            - NotBlank:
+                  groups: [create, edit]
+
+        windSpeed:
+            - NotNull:
+                  groups: [create, edit]
+            - PositiveOrZero:
+                  groups: [create, edit]
+
+        humidity:
+            - NotNull:
+                  groups: [create, edit]
+            - Range:
+                  min: 0
+                  max: 100
+                  groups: [create, edit]
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                  groups: [create, edit]
+            - Length:
+                  min: 2
+                  max: 255
+                  groups: [create, edit]
+
+        country:
+            - NotBlank:
+                  groups: [create, edit]
+            - Choice:
+                  choices: [PL, DE, FR, ES, IT, GB, US]
+                  groups: [create, edit]
+
+        latitude:
+            - NotBlank:
+                  groups: [create, edit]
+            - Range:
+                  min: -90
+                  max: 90
+                  groups: [create, edit]
+
+        longitude:
+            - NotBlank:
+                  groups: [create, edit]
+            - Range:
+                  min: -180
+                  max: 180
+                  groups: [create, edit]
